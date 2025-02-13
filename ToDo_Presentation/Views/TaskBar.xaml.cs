@@ -7,6 +7,7 @@ using Business.Interfaces;
 using Task = Data.Entities.Task;
 using System.Diagnostics;
 using System.ComponentModel;
+using TaskStatus = Data.Entities.TaskStatus;
 namespace ToDo_Presentation.Views
 {
     
@@ -92,6 +93,47 @@ namespace ToDo_Presentation.Views
             loginView.Show();
             this.Close();
 
+        }
+
+        private void deleteTaskBtn_Click(object sender, RoutedEventArgs e)
+        {
+            App.ServiceProvider.GetRequiredService<ITaskService>().DeleteTask((taskListView.SelectedItem as Task).Id);
+            var tasks = App.ServiceProvider.GetRequiredService<ITaskService>().GetTasksByListId((taskList.SelectedItem as List).Id);
+            TaskList = new ObservableCollection<Data.Entities.Task>(tasks);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TaskList"));
+
+        }
+
+        private void statusPending_Click(object sender, RoutedEventArgs e)
+        {
+            App.ServiceProvider.GetRequiredService<ITaskService>().ChangeTaskStatus((taskListView.SelectedItem as Task).Id, TaskStatus.Pending);
+            var tasks = App.ServiceProvider.GetRequiredService<ITaskService>().GetTasksByListId((taskList.SelectedItem as List).Id);
+            TaskList = new ObservableCollection<Data.Entities.Task>(tasks);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TaskList"));
+        }
+
+        private void statusInProgress_Click(object sender, RoutedEventArgs e)
+        {
+            App.ServiceProvider.GetRequiredService<ITaskService>().ChangeTaskStatus((taskListView.SelectedItem as Task).Id, TaskStatus.InProgress);
+            var tasks = App.ServiceProvider.GetRequiredService<ITaskService>().GetTasksByListId((taskList.SelectedItem as List).Id);
+            TaskList = new ObservableCollection<Data.Entities.Task>(tasks);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TaskList"));
+        }
+
+        private void statusCompleted_Click(object sender, RoutedEventArgs e)
+        {
+            App.ServiceProvider.GetRequiredService<ITaskService>().ChangeTaskStatus((taskListView.SelectedItem as Task).Id, TaskStatus.Completed);
+            var tasks = App.ServiceProvider.GetRequiredService<ITaskService>().GetTasksByListId((taskList.SelectedItem as List).Id);
+            TaskList = new ObservableCollection<Data.Entities.Task>(tasks);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TaskList"));
+        }
+
+        private void statusCancelled_Click(object sender, RoutedEventArgs e)
+        {
+            App.ServiceProvider.GetRequiredService<ITaskService>().ChangeTaskStatus((taskListView.SelectedItem as Task).Id, TaskStatus.Cancelled);
+            var tasks = App.ServiceProvider.GetRequiredService<ITaskService>().GetTasksByListId((taskList.SelectedItem as List).Id);
+            TaskList = new ObservableCollection<Data.Entities.Task>(tasks);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TaskList"));
         }
     }
 }

@@ -94,8 +94,19 @@
                     </StackPanel>
 
                     <!-- Task List -->
-                    <ListView Grid.Row="1" ItemsSource="{Binding TaskList }" Margin="5">
-                        <ListView.ItemTemplate>
+                    <ListView Grid.Row="1" ItemsSource="{Binding TaskList }" Margin="5" x:Name="taskListView">
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" x:Name="deleteTaskBtn" Click="deleteTaskBtn_Click"/>
+                                <MenuItem Header="Edit">
+                                    <MenuItem Header="Pending" x:Name="statusPending" Click="statusPending_Click"/>
+                                    <MenuItem Header="InProgress" x:Name="statusInProgress" Click="statusInProgress_Click"/>
+                                    <MenuItem Header="Completed" x:Name="statusCompleted" Click="statusCompleted_Click"/>
+                                    <MenuItem Header="Cancelled" x:Name="statusCancelled" Click="statusCancelled_Click"/>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                            <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                                     <TextBlock Text="{Binding Name}" Width="200"/>
