@@ -1,0 +1,117 @@
+﻿<Window x:Class="ToDo_Presentation.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDo_Presentation.Views"
+        mc:Ignorable="d"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent"
+        Title="MainWindow" Height="450" Width="800">
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="209*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="/Images/Close.png" Grid.Column="1" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imgClose}"/>
+
+        <Border CornerRadius=" 20 0 0 20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FF3092FF" Offset="0"/>
+                    <GradientStop Color="#EAF6FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Canvas>
+                    <Ellipse Width="79" Height="93" Fill="#FFFFFF" Canvas.Left="307" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="79" Opacity="0.6
+                             "/>
+                    <Ellipse Width="150" Height="170" Fill="#FFFFFF" Canvas.Left="307" Canvas.Top="-27" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Ellipse Width="108" Height="106" Fill="#FFFFFF" Canvas.Left="320" Canvas.Top="119" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Ellipse Width="64" Height="66" Fill="#FFFFFF" Canvas.Left="342" Canvas.Top="207" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Ellipse Width="164" Height="184" Fill="#FFFFFF" Canvas.Left="292" Canvas.Top="374" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Ellipse Width="124" Height="85" Fill="#FFFFFF" Canvas.Left="312" Canvas.Top="312" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Ellipse Width="70" Height="75" Fill="#FFFFFF" Canvas.Left="307" Canvas.Top="180" Opacity="0.6                              " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Ellipse Width="95" Height="109" Fill="#FFFFFF" Canvas.Left="307" Canvas.Top="249" Opacity="0.6                              " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Ellipse Width="100" Height="141" Fill="#FFFFFF" Canvas.Left="292" Canvas.Top="31" Opacity="0.3                              " HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Ellipse Width="84" Height="97" Fill="#FFFFFF" Canvas.Left="332" Canvas.Top="255" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Ellipse Width="93" Height="200" Fill="#FFFFFF" Canvas.Left="290" Canvas.Top="164" Opacity="0.3                              " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.124"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                    <Ellipse Width="118" Height="130" Fill="#FFFFFF" Canvas.Left="275" Canvas.Top="368" Opacity="0.3                              " RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Ellipse.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.124"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                    <Ellipse Width="82" Height="110" Fill="#FFFFFF" Canvas.Left="279" Canvas.Top="317" Opacity="0.3                              " RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Ellipse.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.124"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                </Canvas>
+
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Welcome to Cloudy App" Style="{StaticResource ResourceKey=titleText}" Width="208"/>
+                    <TextBlock Text="Ease up the User experience via our Task Manager to handle your daily tasks!" Style="{StaticResource ResourceKey=normalText}" Margin="20 30" Width="249" Height="91"/>
+                    <Button Content="Sign Up!" Style="{StaticResource ResourceKey=btnStyle}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="1" CornerRadius="0 20 20 0" Background="#FFFFFF" MouseDown="Border_MouseDown">
+            
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text ="Sign in to Cloudy" Style="{StaticResource titleText}" Foreground="#FF3092FF"/>
+
+                <Border  BorderThickness="1" BorderBrush="#ACB0AF" Margin="70 30" CornerRadius="5">
+                    <Grid Margin=" 7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="/Images/User.png" Height="20"/>
+                        <TextBlock x:Name="textEmail" MouseDown="textEmail_MouseDown" Text="Username" Style="{StaticResource textHint}"/>
+                        <TextBox x:Name="txtEmail" TextChanged="txtEmail_TextChanged" Style="{StaticResource textBox}"/>
+                    </Grid>
+                </Border>
+
+                <Border  BorderThickness="1" BorderBrush="#ACB0AF" Margin="70 0" CornerRadius="5">
+                    <Grid Margin=" 7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="/Images/Lock.png" Height="20"/>
+                        <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource textHint}"/>
+                        <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged" Style="{StaticResource textBox}"/>
+                    </Grid>
+                </Border>
+
+                <Button Content="Sign In" Click="Button_Click" Style="{StaticResource mainbutton}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
