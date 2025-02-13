@@ -83,5 +83,15 @@ namespace ToDo_Presentation.Views
             TaskList = new ObservableCollection<Data.Entities.Task>(tasks);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TaskList"));
         }
+
+        private void logoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Session.UserId = 0;
+            Session.UserName = "";
+            LoginView loginView = new LoginView();
+            loginView.Show();
+            this.Close();
+
+        }
     }
 }

@@ -66,7 +66,7 @@
                         <!--Bottom Buttons-->
                         <StackPanel DockPanel.Dock="Bottom" Margin="15 40 15 40">
                             <Button Style="{StaticResource menuButton }" Content="New List" x:Name="newListButton" Click="newListButton_Click"/>
-                            <Button Style="{StaticResource menuButton }" Content="Logout"/>
+                            <Button Style="{StaticResource menuButton }" Content="Logout" x:Name="logoutBtn" Click="logoutBtn_Click"/>
                         </StackPanel>
                     </DockPanel>
                 </Border>
