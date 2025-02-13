@@ -54,15 +54,18 @@
 
                         <!--Menu Items-->
                         <StackPanel DockPanel.Dock="Top" Margin="10">
-                            <Button Style="{StaticResource menuButton }" Content="Daily"/>
+                            <!--<Button Style="{StaticResource menuButton }" Content="Daily"/>
                             <Button Style="{StaticResource menuButton }" Content="Special"/>
                             <Button Style="{StaticResource menuButton }" Content="Planned"/>
-                            <Button Style="{StaticResource menuButton }" Content="Missions"/>
+                            <Button Style="{StaticResource menuButton }" Content="Missions"/>-->
+                            <ListBox x:Name="taskList" DisplayMemberPath="Name" SelectionChanged="taskList_SelectionChanged">
+                                
+                            </ListBox>
                         </StackPanel>
 
                         <!--Bottom Buttons-->
                         <StackPanel DockPanel.Dock="Bottom" Margin="15 40 15 40">
-                            <Button Style="{StaticResource menuButton }" Content="New List"/>
+                            <Button Style="{StaticResource menuButton }" Content="New List" x:Name="newListButton" Click="newListButton_Click"/>
                             <Button Style="{StaticResource menuButton }" Content="Logout"/>
                         </StackPanel>
                     </DockPanel>
@@ -91,11 +94,12 @@
                     </StackPanel>
 
                     <!-- Task List -->
-                    <ListView Grid.Row="1" ItemsSource="{Binding TaskList}" Margin="5">
+                    <ListView Grid.Row="1" ItemsSource="{Binding TaskList }" Margin="5">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                                     <TextBlock Text="{Binding Name}" Width="200"/>
+                                    <TextBlock Text="{Binding Description}" Width="200"/>
                                     <TextBlock Text="{Binding Date}" Width="100"/>
                                     <TextBlock Text="{Binding Status}" Width="100"/>
                                 </StackPanel>
@@ -105,8 +109,11 @@
 
                     <!-- Task Input Bar -->
                     <DockPanel Grid.Row="2" Margin="5">
-                        <Button Content="+" Width="30" Height="30" Margin="5"/>
-                        <TextBox Text="Enter Task" Width="300" Margin="5"/>
+                        <Button Content="+" Width="30" Margin="5" x:Name="newTaskBtn" Click="newTaskBtn_Click"/>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBox Text="Enter Task" Width="300" Margin="5" x:Name="newTaskTxt"/>
+                            <TextBox Text="Enter Description" Width="300" Margin="5" x:Name="newTaskDescTxt"/>
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button Content="⏰" Width="30" Height="30" Margin="5"/>
                             <Button Content="📅" Width="30" Height="30" Margin="5"/>

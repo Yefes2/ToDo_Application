@@ -74,7 +74,7 @@
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Welcome to Cloudy App" Style="{StaticResource ResourceKey=titleText}" Width="208"/>
                     <TextBlock Text="Ease up the User experience via our Task Manager to handle your daily tasks!" Style="{StaticResource ResourceKey=normalText}" Margin="20 30" Width="249" Height="91"/>
-                    <Button Content="Sign Up!" Style="{StaticResource ResourceKey=btnStyle}"/>
+                    <Button Content="Sign Up!" Style="{StaticResource ResourceKey=btnStyle}" Click="Button_Click_1"/>
                 </StackPanel>
             </Grid>
         </Border>

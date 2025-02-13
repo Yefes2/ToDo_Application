@@ -17,6 +17,11 @@ namespace DataAccess.Context
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
+        public ApplicationDbContext()
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //One User with many Lists
@@ -33,5 +38,11 @@ namespace DataAccess.Context
                 .HasForeignKey(t => t.ListId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=ToDoApp.db");
+        }
     }
+
 }

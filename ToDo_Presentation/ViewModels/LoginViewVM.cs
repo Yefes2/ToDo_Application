@@ -49,8 +49,8 @@ namespace ToDo_Presentation.ViewModels
             if (_userService.Login(Username, Password))
             {
                 // Navigate to MainWindow
-                var mainWindow = new MainWindow();
-                mainWindow.Show();
+                //var mainWindow = new MainWindow();
+                //mainWindow.Show();
 
                 // Close the current login window
                 App.Current.Windows[0]?.Close();

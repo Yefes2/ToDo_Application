@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business.Services;
+using DataAccess.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,9 +63,22 @@ namespace ToDo_Presentation.Views
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Password))
             {
+                UserService userService = new UserService(new UserRepository(new DataAccess.Context.ApplicationDbContext()));
+                if (!userService.Login(txtEmail.Text, txtPassword.Password))
+                {
+                    MessageBox.Show("Invalid Username or Password!");
+                    return;
+                }
                 MessageBox.Show("Successfully Signed In!");
+                var user = userService.GetUserByUsername(txtEmail.Text);
+                Session.UserName = user.Username;
+                Session.UserId = user.Id;
+                TaskBar taskBar = new TaskBar();
+                taskBar.Show();
+                this.Close();
             }
         }
+        
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -74,6 +89,12 @@ namespace ToDo_Presentation.Views
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            RegisterView registerView = new RegisterView();
+            registerView.ShowDialog();
         }
     }
 }

@@ -15,13 +15,15 @@ namespace ToDo_Presentation;
 
 public partial class App : Application
 {
-    private readonly ServiceProvider _serviceProvider;
+    public static ServiceProvider ServiceProvider;
 
     public App()
     {
         ServiceCollection services = new ServiceCollection();
         ConfigureServices(services);
-        _serviceProvider = services.BuildServiceProvider();
+        ServiceProvider = services.BuildServiceProvider();
+        var scope = ServiceProvider.CreateScope();
+        scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.EnsureCreated();
     }
 
     private void ConfigureServices(ServiceCollection services)
